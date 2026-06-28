@@ -16,7 +16,7 @@ export function aggiornaGrafica(datiSfondo, picchi) {
     const larghezzaBarra = canvas.width / datiSfondo.length;
     
     // 1. DISEGNA LA NORMA (Attenuata e semi-trasparente)
-    ctx.fillStyle = 'rgba(56, 189, 248, 0.12)'; // Azzurro molto trasparente
+    ctx.fillStyle = 'rgba(56, 189, 248, 0.60)'; // Azzurro molto trasparente
     for (let i = 0; i < datiSfondo.length; i++) {
         // Calcola l'altezza in base al volume
         const altezzaBarra = (datiSfondo[i] / 255) * canvas.height;
