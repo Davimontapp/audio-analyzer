@@ -1,0 +1,17 @@
+{
+  "name": "Audio Analyzer Pro",
+  "short_name": "AudioAnalyzer",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme-color": "#0f172a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3843/3843101.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
