@@ -1,4 +1,7 @@
-const CACHE_NAME = 'audio-analyzer-v1';
+// AGGIORNA SOLO QUESTO VALORE QUANDO FAI MODIFICHE:
+const VERSION = 'v1.2.0'; 
+
+const CACHE_NAME = `audio-analyzer-${VERSION}`;
 const ASSETS = [
   '/',
   '/index.html',
@@ -33,7 +36,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Intercetta le richieste di rete per far funzionare l'app offline
+// Intercetta le richieste di rete
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
@@ -42,9 +45,17 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// Ascolta l'ordine di saltare l'attesa per l'aggiornamento immediato
+// Gestione dei messaggi in arrivo dall'app
 self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
+  if (!event.data) return;
+
+  // Se l'app chiede la versione, rispondi con il valore della variabile VERSION
+  if (event.data.type === 'GET_VERSION') {
+    event.ports[0].postMessage({ version: VERSION });
+  }
+  
+  // Ordine di saltare l'attesa per l'aggiornamento immediato
+  if (event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
 });
